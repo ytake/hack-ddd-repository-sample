@@ -1,0 +1,20 @@
+{
+  "name": "ytake/hack-ddd-repository-example-phpcon-sendai",
+  "type": "project",
+  "minimum-stability": "stable",
+  "description": "#phpconsen example",
+  "require": {
+    "hhvm": "^3.30.0",
+    "hhvm/hhvm-autoload": "^1.7",
+    "hhvm/hsl": "^3.30.0",
+    "hhvm/hsl-experimental": "^3.30.0"
+  },
+  "require-dev": {
+    "hhvm/hacktest": "^1.3",
+    "facebook/fbexpect": "^2.3",
+    "hhvm/hhast": "^3.30.0"
+  },
+  "autoload": {
+    "psr-4": { "Acme\\": "src/" }
+  }
+}
