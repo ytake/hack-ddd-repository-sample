@@ -4,17 +4,18 @@ namespace Acme\Application;
 
 use type DateTime;
 
-type FeedRequest = shape(
-  'datetime' => DateTime
-);
-
 final class FeedRequestTransfer {
+  
+  const type FeedRequest = shape(
+    'datetime' => DateTime
+  );
 
   public function __construct(
-    private FeedRequest $request
+    private array<arraykey, mixed> $request
   ) {}
 
   public function getDateTime(): DateTime {
-    return Shapes::idx($this->request, 'datetime', new DateTime());
+    $request = $this->request as this::FeedRequest;
+    return $request['datetime'];
   }
 }

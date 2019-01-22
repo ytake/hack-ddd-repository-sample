@@ -38,9 +38,9 @@ final class LatestArticleFeedTest extends HackTest {
     $this->registerArticle(2, 'hello PHP', '-3 hours');
     $this->registerArticle(3, 'hello Sendai', '-5 hours');
 
-    $result = $this->service?->execute(new Application\FeedRequestTransfer(shape(
+    $result = $this->service?->execute(new Application\FeedRequestTransfer([
       'datetime' => new DateTime('-4 hours'),
-    )));
+    ]));
     expect(count($result))
       ->toBeSame(2,);
     if ($result is vec<_>) {
@@ -48,6 +48,13 @@ final class LatestArticleFeedTest extends HackTest {
       expect(Shapes::idx($row, 'id'))->toBeSame(1);
       expect(Shapes::idx($row, 'content'))->toBeSame('hello Hack');
     }
+  }
+
+  <<ExpectedException(TypeAssertionException::class)>>
+  public function testShouldThrow(): void {
+    $result = $this->service?->execute(new Application\FeedRequestTransfer([
+      'datetime' => 1234,
+    ]));
   }
 
   private function registerArticle(

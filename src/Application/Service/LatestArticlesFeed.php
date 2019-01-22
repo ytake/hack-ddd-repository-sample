@@ -22,7 +22,7 @@ final class LatestArticleFeed {
       $this->specificationFactory->createLatestPosts($request->getDateTime())
     );
     if(C\count($result)) {
-      return Vec\map_with_key($result, ($_, $v) ==> {
+      return Vec\map($result, ($v) ==> {
         return shape(
             'id' => $v->getID()->id(),
             'content' => $v->body()->content(),
