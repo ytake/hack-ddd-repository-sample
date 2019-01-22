@@ -7,11 +7,11 @@ use type Acme\Domain\Model\Article\Entity\Article;
 use namespace Acme\Domain\Model\Article\Specification;
 
 final class ArticleSpecificationFactory
-  implements Specification\ArticleSpecificationFactoryInterface<Article> {
+  implements Specification\ArticleSpecificationFactoryInterface<Article<int>> {
 
   public function createLatestPosts(
     DateTime $since
-  ): Specification\SpecificationInterface<Article> {
+  ): Specification\SpecificationInterface<Article<int>> {
     return new LatestPostSpecification($since);
   }
 }

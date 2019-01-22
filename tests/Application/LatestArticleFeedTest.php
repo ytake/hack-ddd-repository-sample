@@ -14,6 +14,7 @@ final class LatestArticleFeedTest extends HackTest {
   private ?Application\Service\LatestArticleFeed $service;
   private ?Map\ArticleRepository $repository;
 
+  <<__Override>>
   public async function beforeEachTestAsync(): Awaitable<void> {
     $this->repository = new Map\ArticleRepository();
     $this->service = new Application\Service\LatestArticleFeed(
@@ -61,7 +62,7 @@ final class LatestArticleFeedTest extends HackTest {
     int $id,
     string $body,
     string $datetimeString
-  ): Article {
+  ): Article<int> {
     $article = new Article(new ArticleId($id), new Body($body), new DateTime($datetimeString));
     $this->repository?->add($article);
     return $article;

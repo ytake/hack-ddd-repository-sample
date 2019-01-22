@@ -4,15 +4,16 @@ namespace Acme\Application\Service;
 
 use namespace HH\Lib\{Vec, C};
 use type Acme\Application\FeedRequestTransfer;
-use Acme\Domain\Model\Article\Entity\Article;
-use type Acme\Domain\Model\Article\Repository\ArticleRepositoryInterface;
-use type Acme\Domain\Model\Article\Specification\ArticleSpecificationFactoryInterface;
+use type Acme\Domain\Model\EntityInterface;
+use type Acme\Domain\Model\Article\Entity\Article;
+use type Acme\Domain\Model\Article\Repository\ArticleRepositoryInterface as Repository;
+use type Acme\Domain\Model\Article\Specification\ArticleSpecificationFactoryInterface as SpecificationFactory;
 
 final class LatestArticleFeed {
 
   public function __construct(
-    private ArticleRepositoryInterface<Article> $repository,
-    private ArticleSpecificationFactoryInterface<Article> $specificationFactory
+    private Repository<int, Article<int>> $repository,
+    private SpecificationFactory<Article<int>> $specificationFactory
   ) {}
 
   public function execute(
@@ -24,7 +25,7 @@ final class LatestArticleFeed {
     if(C\count($result)) {
       return Vec\map($result, ($v) ==> {
         return shape(
-            'id' => $v->getID()->id(),
+            'id' => $v->getID(),
             'content' => $v->body()->content(),
             'created_at' => $v->createdAt()
         );

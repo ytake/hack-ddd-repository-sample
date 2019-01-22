@@ -5,7 +5,7 @@ namespace Acme\Application;
 use type DateTime;
 
 final class FeedRequestTransfer {
-  
+
   const type FeedRequest = shape(
     'datetime' => DateTime
   );

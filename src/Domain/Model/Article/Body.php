@@ -3,7 +3,6 @@
 namespace Acme\Domain\Model\Article;
 
 use namespace HH\Lib\Str;
-use function trim;
 
 final class Body {
   const int MIN_LENGTH = 3;
