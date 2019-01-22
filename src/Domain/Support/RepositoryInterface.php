@@ -2,7 +2,6 @@
 
 namespace Acme\Domain\Support;
 
-
 interface RepositoryInterface<TId, T> {
 
   public function add(T $article): void;
