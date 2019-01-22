@@ -8,12 +8,12 @@ use type Acme\Domain\Model\EntityInterface;
 use type Acme\Domain\Model\Article\ArticleId;
 use type Acme\Domain\Model\Article\Body;
 
-class Article<T> implements EntityInterface<T> {
+class Article {
 
   const int EXPIRE_EDIT_TIME = 120;
 
   public function __construct(
-    private ArticleId<T> $id,
+    private ArticleId $id,
     private Body $body,
     private DateTime $createdAt = new DateTime()
   ) {}
@@ -31,7 +31,7 @@ class Article<T> implements EntityInterface<T> {
   }
 
   <<__Rx>>
-  public function getID(): ArticleId<T> {
+  public function getID(): ArticleId {
     return $this->id;
   }
 

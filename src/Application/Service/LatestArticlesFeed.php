@@ -11,8 +11,8 @@ use type Acme\Domain\Model\Article\Specification\ArticleSpecificationFactoryInte
 final class LatestArticleFeed {
 
   public function __construct(
-    private ArticleRepositoryInterface<int> $repository,
-    private ArticleSpecificationFactoryInterface $specificationFactory
+    private ArticleRepositoryInterface<Article> $repository,
+    private ArticleSpecificationFactoryInterface<Article> $specificationFactory
   ) {}
 
   public function execute(

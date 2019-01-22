@@ -3,9 +3,9 @@
 namespace Acme\Domain\Model\Article\Specification;
 
 use type Acme\Domain\Model\Article\Entity\Article;
+use type Acme\Domain\Model\EntityInterface;
 
-interface SpecificationInterface {
-
+interface SpecificationInterface<T> {
   <<__Rx>>
-  public function isSatisfiedBy<T>(Article<T> $entity): bool;
+  public function isSatisfiedBy(T $entity): bool;
 }

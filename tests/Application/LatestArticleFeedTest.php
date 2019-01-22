@@ -12,10 +12,10 @@ use function Facebook\FBExpect\expect;
 final class LatestArticleFeedTest extends HackTest {
 
   private ?Application\Service\LatestArticleFeed $service;
-  private ?Map\ArticleRepository<int> $repository;
+  private ?Map\ArticleRepository $repository;
 
   public async function beforeEachTestAsync(): Awaitable<void> {
-    $this->repository = new Map\ArticleRepository<int>();
+    $this->repository = new Map\ArticleRepository();
     $this->service = new Application\Service\LatestArticleFeed(
       $this->repository,
       new Map\ArticleSpecificationFactory()
@@ -28,7 +28,8 @@ final class LatestArticleFeedTest extends HackTest {
     $this->registerArticle(3, 'hello Sendai', '-5 hours');
     expect($this->repository?->size())
       ->toBeSame(3,);
-    expect($this->repository?->findById(new ArticleId(1)))
+    $article = new ArticleId(1);
+    expect($this->repository?->findById($article->id()))
       ->toBeSame($temporary);
   }
 
@@ -53,7 +54,7 @@ final class LatestArticleFeedTest extends HackTest {
     int $id,
     string $body,
     string $datetimeString
-  ): Article<int> {
+  ): Article {
     $article = new Article(new ArticleId($id), new Body($body), new DateTime($datetimeString));
     $this->repository?->add($article);
     return $article;

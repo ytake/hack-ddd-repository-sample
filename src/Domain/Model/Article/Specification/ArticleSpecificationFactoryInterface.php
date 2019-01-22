@@ -4,9 +4,9 @@ namespace Acme\Domain\Model\Article\Specification;
 
 use type DateTime;
 
-interface ArticleSpecificationFactoryInterface {
+interface ArticleSpecificationFactoryInterface<T> {
 
   public function createLatestPosts(
     DateTime $since
-  ): SpecificationInterface;
+  ): SpecificationInterface<T>;
 }
