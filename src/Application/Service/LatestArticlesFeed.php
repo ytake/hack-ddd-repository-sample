@@ -4,7 +4,6 @@ namespace Acme\Application\Service;
 
 use namespace HH\Lib\{Vec, C};
 use type Acme\Application\FeedRequestTransfer;
-use type Acme\Domain\Model\EntityInterface;
 use type Acme\Domain\Model\Article\Entity\Article;
 use type Acme\Domain\Model\Article\Repository\ArticleRepositoryInterface as Repository;
 use type Acme\Domain\Model\Article\Specification\ArticleSpecificationFactoryInterface as SpecificationFactory;

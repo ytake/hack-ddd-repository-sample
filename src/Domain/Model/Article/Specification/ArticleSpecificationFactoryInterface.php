@@ -3,6 +3,7 @@
 namespace Acme\Domain\Model\Article\Specification;
 
 use type DateTime;
+use type Acme\Domain\Support\SpecificationInterface;
 
 interface ArticleSpecificationFactoryInterface<T> {
 

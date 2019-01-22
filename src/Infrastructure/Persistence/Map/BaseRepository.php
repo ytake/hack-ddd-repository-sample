@@ -3,7 +3,7 @@
 namespace Acme\Infrastructure\Persistence\Map;
 
 use type Acme\Domain\Model\EntityInterface;
-use type Acme\Domain\Model\Article\Specification\SpecificationInterface;
+use type Acme\Domain\Support\SpecificationInterface;
 use type Acme\Domain\Model\Article\Repository\ArticleRepositoryInterface;
 
 abstract class BaseRepository<TId, T as EntityInterface<TId>>

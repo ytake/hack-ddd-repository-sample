@@ -1,6 +1,6 @@
 <?hh // strict
 
-namespace Acme\Domain\Model\Article\Specification;
+namespace Acme\Domain\Support;
 
 interface SpecificationInterface<T> {
   <<__Rx>>
