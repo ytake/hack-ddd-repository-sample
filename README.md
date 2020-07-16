@@ -1,6 +1,6 @@
 # DDD Repository Examples / Application
 
-**required HHVM >= 3.30**
+**required HHVM >= 4.62**
 
 For [PHPConSendai 2019](https://phpcon-sendai.net/2019/)
 

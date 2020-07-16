@@ -1,5 +1,3 @@
-<?hh // strict
-
 namespace Acme\Domain\Model\Article;
 
 use namespace HH\Lib\Str;

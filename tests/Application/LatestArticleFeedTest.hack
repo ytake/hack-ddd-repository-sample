@@ -1,5 +1,3 @@
-<?hh // strict
-
 use type DateTime;
 use type Acme\Domain\Model\Article\ArticleId;
 use type Acme\Domain\Model\Article\Body;
@@ -11,8 +9,8 @@ use function Facebook\FBExpect\expect;
 
 final class LatestArticleFeedTest extends HackTest {
 
-  private ?Application\Service\LatestArticleFeed $service;
-  private ?Map\ArticleRepository $repository;
+  <<__LateInit>> private Application\Service\LatestArticleFeed $service;
+  <<__LateInit>> private Map\ArticleRepository $repository;
 
   <<__Override>>
   public async function beforeEachTestAsync(): Awaitable<void> {
@@ -27,10 +25,10 @@ final class LatestArticleFeedTest extends HackTest {
     $temporary = $this->registerArticle(1, 'hello Hack', '-2 hours');
     $this->registerArticle(2, 'hello PHP', '-3 hours');
     $this->registerArticle(3, 'hello Sendai', '-5 hours');
-    expect($this->repository?->size())
+    expect($this->repository->size())
       ->toBeSame(3,);
     $article = new ArticleId(1);
-    expect($this->repository?->findById($article->id()))
+    expect($this->repository->findById($article->id()))
       ->toBeSame($temporary);
   }
 
@@ -39,7 +37,7 @@ final class LatestArticleFeedTest extends HackTest {
     $this->registerArticle(2, 'hello PHP', '-3 hours');
     $this->registerArticle(3, 'hello Sendai', '-5 hours');
 
-    $result = $this->service?->execute(new Application\FeedRequestTransfer([
+    $result = $this->service->execute(new Application\FeedRequestTransfer(darray[
       'datetime' => new DateTime('-4 hours'),
     ]));
     expect(count($result))
@@ -51,11 +49,10 @@ final class LatestArticleFeedTest extends HackTest {
     }
   }
 
-  <<ExpectedException(TypeAssertionException::class)>>
   public function testShouldThrow(): void {
-    $result = $this->service?->execute(new Application\FeedRequestTransfer([
+    expect(() ==> $this->service->execute(new Application\FeedRequestTransfer(darray[
       'datetime' => 1234,
-    ]));
+    ])))->toThrow(TypeAssertionException::class);
   }
 
   private function registerArticle(
@@ -64,7 +61,7 @@ final class LatestArticleFeedTest extends HackTest {
     string $datetimeString
   ): Article<int> {
     $article = new Article(new ArticleId($id), new Body($body), new DateTime($datetimeString));
-    $this->repository?->add($article);
+    $this->repository->add($article);
     return $article;
   }
 }

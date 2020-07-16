@@ -1,5 +1,3 @@
-<?hh // strict
-
 namespace Acme\Application;
 
 use type DateTime;
@@ -11,7 +9,7 @@ final class FeedRequestTransfer {
   );
 
   public function __construct(
-    private array<arraykey, mixed> $request
+    private darray<arraykey, mixed> $request
   ) {}
 
   public function getDateTime(): DateTime {

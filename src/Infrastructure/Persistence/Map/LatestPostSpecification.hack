@@ -1,5 +1,3 @@
-<?hh // strict
-
 namespace Acme\Infrastructure\Persistence\Map;
 
 use type DateTime;

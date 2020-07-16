@@ -1,12 +1,10 @@
-<?hh // strict
-
 namespace Acme\Infrastructure\Persistence\Map;
 
 use type Acme\Domain\Model\EntityInterface;
 use type Acme\Domain\Support\SpecificationInterface;
 use type Acme\Domain\Model\Article\Repository\ArticleRepositoryInterface;
 
-abstract class BaseRepository<TId, T as EntityInterface<TId>>
+abstract class BaseRepository<TId as arraykey, T as EntityInterface<TId>>
   implements ArticleRepositoryInterface<TId, T> {
 
   protected Map<TId, T> $collect = Map{};

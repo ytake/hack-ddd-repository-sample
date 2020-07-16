@@ -1,8 +1,6 @@
-<?hh // strict
-
 namespace Acme\Domain\Support;
 
-interface RepositoryInterface<TId, T> {
+interface RepositoryInterface<TId as arraykey, T> {
 
   public function add(T $article): void;
 

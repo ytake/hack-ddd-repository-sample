@@ -1,5 +1,3 @@
-<?hh // strict
-
 namespace Acme\Application\Service;
 
 use namespace HH\Lib\{Vec, C};

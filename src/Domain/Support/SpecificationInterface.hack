@@ -1,4 +1,3 @@
-<?hh // strict
 
 namespace Acme\Domain\Support;
 

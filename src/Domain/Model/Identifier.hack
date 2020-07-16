@@ -1,5 +1,3 @@
-<?hh // strict
-
 namespace Acme\Domain\Model;
 
 abstract class Identifier<T> {
